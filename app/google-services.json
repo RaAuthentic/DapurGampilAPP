@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "158481976934",
+    "project_id": "dapurgampilapp-d5b8d",
+    "storage_bucket": "dapurgampilapp-d5b8d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:158481976934:android:b8a4e28217212fddc267a7",
+        "android_client_info": {
+          "package_name": "com.example.dapurgampilapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB8l3_iwmRIDLUqWIaAC2b4nhxSg8GGuJI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
