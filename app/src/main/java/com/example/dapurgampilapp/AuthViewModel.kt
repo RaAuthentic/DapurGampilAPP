@@ -19,10 +19,18 @@ class AuthViewModel : ViewModel() {
     }
 
     fun checkAuthStatus() {
-        if (auth.currentUser == null) {
+        val user = auth.currentUser
+        if (user == null) {
             _authState.value = AuthState.Unauthenticated
         } else {
-            _authState.value = AuthState.Authenticated
+            firestore.collection("users").document(user.uid).get()
+                .addOnSuccessListener { document ->
+                    val role = document.getLong("role")?.toInt() ?: 2 // Default to Customer if role not found
+                    _authState.value = AuthState.Authenticated(role)
+                }
+                .addOnFailureListener {
+                    _authState.value = AuthState.Error("Failed to retrieve user data")
+                }
         }
     }
 
@@ -36,10 +44,9 @@ class AuthViewModel : ViewModel() {
         auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    _authState.value = AuthState.Authenticated
+                    checkAuthStatus() // Fetch user role after successful login
                 } else {
-                    _authState.value =
-                        AuthState.Error(task.exception?.message ?: "Something went wrong")
+                    _authState.value = AuthState.Error(task.exception?.message ?: "Something went wrong")
                 }
             }
     }
@@ -81,10 +88,9 @@ class AuthViewModel : ViewModel() {
                                 .set(userData)
                                 .addOnCompleteListener { dbTask ->
                                     if (dbTask.isSuccessful) {
-                                        _authState.value = AuthState.Authenticated
+                                        _authState.value = AuthState.Authenticated(roleLevel)
                                     } else {
-                                        _authState.value =
-                                            AuthState.Error("Failed to save user data in Firestore")
+                                        _authState.value = AuthState.Error("Failed to save user data in Firestore")
                                     }
                                 }
                         } else {
@@ -92,8 +98,7 @@ class AuthViewModel : ViewModel() {
                         }
                     }
                 } else {
-                    _authState.value =
-                        AuthState.Error(task.exception?.message ?: "Something went wrong")
+                    _authState.value = AuthState.Error(task.exception?.message ?: "Something went wrong")
                 }
             }
     }
@@ -104,8 +109,9 @@ class AuthViewModel : ViewModel() {
     }
 }
 
+
 sealed class AuthState {
-    object Authenticated : AuthState()
+    data class Authenticated(val role: Int) : AuthState() // Include role as an integer
     object Unauthenticated : AuthState()
     object Loading : AuthState()
     data class Error(val message: String) : AuthState()

@@ -8,6 +8,9 @@ import androidx.navigation.compose.rememberNavController
 import com.example.dapurgampilapp.screens.LoginPage
 import com.example.dapurgampilapp.AuthViewModel
 import com.example.dapurgampilapp.screens.HomePage
+import com.example.dapurgampilapp.screens.HomePageAdmin
+import com.example.dapurgampilapp.screens.HomePageCustomer
+import com.example.dapurgampilapp.screens.HomePagePartner
 import com.example.dapurgampilapp.screens.SignupPage
 
 @Composable
@@ -23,6 +26,15 @@ fun AppNavigation(modifier: Modifier = Modifier, authViewModel: AuthViewModel) {
         }
         composable("home") {
             HomePage(modifier,navController,authViewModel)
+        }
+        composable("home admin") {
+            HomePageAdmin(modifier,navController,authViewModel)
+        }
+        composable("home customer") {
+            HomePageCustomer(modifier,navController,authViewModel)
+        }
+        composable("home partner") {
+            HomePagePartner(modifier,navController,authViewModel)
         }
     })
 }

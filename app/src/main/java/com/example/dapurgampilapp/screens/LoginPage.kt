@@ -29,33 +29,35 @@ import com.example.dapurgampilapp.AuthViewModel
 @Composable
 fun LoginPage(
     modifier: Modifier = Modifier,
-    NavController: NavController,
+    navController: NavController,
     authViewModel: AuthViewModel
 ) {
-    var email by remember {
-        mutableStateOf("")
-    }
-    var password by remember {
-        mutableStateOf("")
-    }
+    var email by remember { mutableStateOf("") }
+    var password by remember { mutableStateOf("") }
 
-    val authState =authViewModel.authState.observeAsState()
+    val authState by authViewModel.authState.observeAsState()
     val context = LocalContext.current
 
-    LaunchedEffect(authState.value) {
-        when (authState.value) {
+    LaunchedEffect(authState) {
+        when (authState) {
             is AuthState.Authenticated -> {
-                NavController.navigate("home") {
+                val role = (authState as AuthState.Authenticated).role
+                val destination = when (role) {
+                    0 -> "home admin"
+                    1 -> "home partner"
+                    2 -> "home customer"
+                    else -> "login" // Default to login if the role is unknown
+                }
+                navController.navigate(destination) {
                     popUpTo("login") { inclusive = true }
                 }
             }
             is AuthState.Error -> {
-                Toast.makeText(context, (authState.value as AuthState.Error).message, Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, (authState as AuthState.Error).message, Toast.LENGTH_SHORT).show()
             }
             else -> Unit
         }
     }
-
 
     Column(
         modifier = modifier.fillMaxSize(),
@@ -76,7 +78,7 @@ fun LoginPage(
         OutlinedTextField(
             value = password,
             onValueChange = { password = it },
-            label = { Text(text = "password") })
+            label = { Text(text = "Password") })
 
         Spacer(modifier = Modifier.height(16.dp))
 
@@ -84,19 +86,14 @@ fun LoginPage(
             authViewModel.login(email, password)
         }) {
             Text(text = "Login")
-
         }
 
         Spacer(modifier = Modifier.height(8.dp))
 
         TextButton(onClick = {
-            NavController.navigate("signup")
-
+            navController.navigate("signup")
         }) {
-            Text(text = "Dont hae Account, Singup ")
-
+            Text(text = "Don't have an account? Sign up")
         }
-
-
     }
 }
