@@ -1,4 +1,4 @@
-package com.example.dapurgampilapp.screens
+package com.example.dapurgampilapp.screens.logins
 
 import android.widget.Toast
 import androidx.compose.foundation.layout.Arrangement

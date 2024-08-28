@@ -5,13 +5,13 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.dapurgampilapp.screens.LoginPage
+import com.example.dapurgampilapp.screens.logins.LoginPage
 import com.example.dapurgampilapp.AuthViewModel
-import com.example.dapurgampilapp.screens.HomePage
-import com.example.dapurgampilapp.screens.HomePageAdmin
+import com.example.dapurgampilapp.screens.logins.HomePage
+import com.example.dapurgampilapp.screens.admins.HomePageAdmin
 import com.example.dapurgampilapp.screens.HomePageCustomer
 import com.example.dapurgampilapp.screens.HomePagePartner
-import com.example.dapurgampilapp.screens.SignupPage
+import com.example.dapurgampilapp.screens.logins.SignupPage
 
 @Composable
 fun AppNavigation(modifier: Modifier = Modifier, authViewModel: AuthViewModel) {

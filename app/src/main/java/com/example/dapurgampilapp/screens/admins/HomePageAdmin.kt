@@ -1,33 +1,30 @@
-package com.example.dapurgampilapp.screens
+package com.example.dapurgampilapp.screens.admins
 
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Settings
+import androidx.compose.material3.Badge
+import androidx.compose.material3.BadgedBox
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
-import com.example.dapurgampilapp.AuthState
 import com.example.dapurgampilapp.AuthViewModel
-import com.example.dapurgampilapp.navigation.NavAdminItem
+import com.example.dapurgampilapp.UserViewModel
+import com.example.dapurgampilapp.data.NavAdminItem
+
 
 @Composable
 fun HomePageAdmin(
@@ -35,7 +32,6 @@ fun HomePageAdmin(
     navController: NavController,
     authViewModel: AuthViewModel
 ) {
-
     val navItemList = listOf(
         NavAdminItem("Home", Icons.Default.Home),
         NavAdminItem("User", Icons.Default.AccountCircle),
@@ -52,50 +48,50 @@ fun HomePageAdmin(
             NavigationBar {
                 navItemList.forEachIndexed { index, navItem ->
                     NavigationBarItem(
-                        selected = selectedIndex ==index,
+                        selected = selectedIndex == index,
                         onClick = {
                             selectedIndex = index
                         },
                         icon = {
-                            Icon(imageVector = navItem.icon, contentDescription = "Icon")
+                            BadgedBox(badge = {
+                                Badge()
+                                Text(text = "" )
+                            }) {
+                                Icon(imageVector = navItem.icon, contentDescription = "Icon")
+                            }
                         },
                         label = {
                             Text(text = navItem.label)
                         }
                     )
-
                 }
             }
         }
     ) { innerPadding ->
-        ContentScreen(modifier = Modifier.padding(innerPadding))
-
+        ContentScreen(
+            modifier = Modifier.padding(innerPadding),
+            selectedIndex = selectedIndex,
+            navController = navController,
+            authViewModel = authViewModel
+        )
     }
-//    val authState = authViewModel.authState.observeAsState()
-//
-//    LaunchedEffect(authState.value) {
-//        when (authState.value) {
-//            is AuthState.Unauthenticated -> navController.navigate("login")
-//            else -> Unit
-//        }
-//    }
-//
-//    Column(
-//        modifier = modifier.fillMaxSize(),
-//        verticalArrangement = Arrangement.Center,
-//        horizontalAlignment = Alignment.CenterHorizontally
-//    ) {
-//        Text(text = "Selamat Datang, Admin", fontSize = 32.sp)
-//
-//        TextButton(onClick = {
-//            authViewModel.signout()
-//        }) {
-//            Text(text = "Sign Out")
-//        }
-//    }
 }
+
 
 @Composable
-fun ContentScreen(modifier: Modifier = Modifier) {
+fun ContentScreen(
+    modifier: Modifier = Modifier,
+    selectedIndex: Int,
+    navController: NavController,
+    authViewModel: AuthViewModel
+) {
+    val userViewModel: UserViewModel = viewModel()
 
+    when (selectedIndex) {
+        0 -> NavAdminHome(modifier)
+        1 -> NavAdminUser(modifier, userViewModel = userViewModel, navController = navController)
+        2 -> NavAdminSettings(navController = navController, authViewModel = authViewModel)
+    }
 }
+
+

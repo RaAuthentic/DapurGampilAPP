@@ -1,0 +1,188 @@
+{
+  "categories": [
+    {
+      "category": "Ricebox Wenag",
+      "description": "Berikut harga dan menu Ricebox Wenag dengan rasa yang unik dan enak. Silakan memesan sembari menikmati suasana enjoy di rumah",
+      "items": [
+        {
+          "name": "Ricebox Ayam Goreng Mentega",
+          "description": "Kuliner Ekonomis Nikmat Dengan Sajian Yang Terdiri Dari Nasi Ayam Goreng Mentega Dan Sayuran Gratis 1 Cup Es Teh Manis",
+          "price": "Rp. 12,500"
+        },
+        {
+          "name": "Ricebox Sosis Lada Hitam",
+          "description": "Kuliner Ekonomis Nikmat Dengan Sajian Yang Terdiri Dari Nasi Sosis Lada Hitam Dan Sayuran Gratis 1 Cup Es Teh Manis",
+          "price": "Rp. 12,500"
+        },
+        {
+          "name": "Ricebox Ceker Sosis Mercon",
+          "description": "Kuliner Ekonomis Nikmat Dengan Sajian Yang Terdiri Dari Nasi Ceker Sosis Mercon Dan Sayuran Gratis 1 Cup Es Teh Manis",
+          "price": "Rp. 12,500"
+        },
+        {
+          "name": "Ricebox Bakso Saus Spaghetti",
+          "description": "Kuliner Ekonomis Nikmat Dengan Sajian Yang Terdiri Dari Nasi Bakso Saus Spaghetti Dan Sayuran Gratis 1 Cup Es Teh Manis",
+          "price": "Rp. 12,500"
+        },
+        {
+          "name": "Ricebox Nugget Saus Keju",
+          "description": "Kuliner Ekonomis Nikmat Dengan Sajian Yang Terdiri Dari Nasi Nugget Saus Keju Dan Sayuran Gratis 1 Cup Es Teh Manis",
+          "price": "Rp. 12,500"
+        }
+      ]
+    },
+    {
+      "category": "Gegorengan Paket Nasi",
+      "description": "Berikut harga dan menu Gegorengan Paket Nasi dengan harga yang ekonomis. Anda bisa menikmati bersama keluarga dan saudara anda",
+      "items": [
+        {
+          "name": "Paket Ayam Goreng Dada Nasi Sambal Terasi",
+          "description": "Paket 1 Potong Ayam Goreng (bagian Dada) Komplit Dengan Nasi Lalapan Timun Kol Potongan Tahu Tempe Dan Sambal Terasi Gratis 1 Cup Es Teh Manis",
+          "price": "Rp. 18,500"
+        },
+        {
+          "name": "Paket Ayam Goreng Paha Atas Nasi Sambal Terasi",
+          "description": "Paket 1 Potong Ayam Goreng (bagian Paha Atas) Komplit Dengan Nasi Lalapan Timun Kol Potongan Tahu Tempe Dan Sambal Terasi Gratis 1 Cup Es Teh Manis",
+          "price": "Rp. 18,500"
+        }
+      ]
+    },
+    {
+      "category": "Bebakaran Paket Nasi",
+      "description": "Berikut harga dan menu Bebakaran Paket Nasi dengan rasa yang paling enak. Menu ini sangat enak dinikmati dengan suasana santai di rumah",
+      "items": [
+        {
+          "name": "Paket Ayam Bakar Dada Nasi Sambal Terasi",
+          "description": "Paket 1 Potong Ayam Bakar (bagian Dada) Komplit Dengan Nasi Lalapan Timun Kol Potongan Tahu Tempe Dan Sambal Terasi Gratis 1 Cup Es Teh Manis",
+          "price": "Rp. 18,500"
+        },
+        {
+          "name": "Paket Ayam Bakar Paha Atas Nasi Sambal Terasi",
+          "description": "Paket 1 Potong Ayam Bakar (bagian Paha Atas) Komplit Dengan Nasi Lalapan Timun Kol Potongan Tahu Tempe Dan Sambal Terasi Gratis 1 Cup Es Teh Manis",
+          "price": "Rp. 18,500"
+        }
+      ]
+    },
+    {
+      "category": "Kekatsuan Paket Nasi",
+      "description": "Berikut harga dan menu Kekatsuan Paket Nasi dengan harga yang ekonomis. Anda bisa menikmati bersama keluarga dan saudara anda",
+      "items": [
+        {
+          "name": "Paket Ayam Kekatsuan Saus Barbekyu Nasi",
+          "description": "Paket 1 Potong Ayam Katsu Saus Barbekyu Komplit Dengan Nasi Dan Lalapan Daun Selada Potongan Timun Serta Saus Sambal Sachet Gratis 1 Cup Es Teh Manis",
+          "price": "Rp. 18,500"
+        },
+        {
+          "name": "Paket Ayam Kekatsuan Saus Lada Hitam Nasi",
+          "description": "Paket 1 Potong Ayam Katsu Saus Lada Hitam Komplit Dengan Nasi Dan Lalapan Daun Selada Potongan Timun Serta Saus Sambal Sachet Gratis 1 Cup Es Teh Manis",
+          "price": "Rp. 18,500"
+        },
+        {
+          "name": "Paket Ayam Kekatsuan Saus Spaghetti Nasi",
+          "description": "Paket 1 Potong Ayam Katsu Saus Spaghetti Komplit Dengan Nasi Dan Lalapan Daun Selada Potongan Timun Serta Saus Sambal Sachet Gratis 1 Cup Es Teh Manis",
+          "price": "Rp. 18,500"
+        }
+      ]
+    },
+    {
+      "category": "Cemilan",
+      "description": "Berikut harga dan menu Cemilan dengan rasa yang paling enak. Menu ini sangat enak dinikmati dengan suasana santai di rumah",
+      "items": [
+        {
+          "name": "Kentang Sosis",
+          "description": "Kentang Dan Sosis Goreng Dengan Saus Sambal",
+          "price": "Rp. 12,500"
+        },
+        {
+          "name": "Sosis Bakar",
+          "description": "Sosis Bakar Dengan Tambahan Saus Mayonaise Dan Saus Sambal",
+          "price": "Rp. 12,500"
+        },
+        {
+          "name": "Seblak Komplit",
+          "description": "Seblak Telur Dengan Isian Aneka Kerupuk Ditambah Ceker Ayam Tulang Ayam Potongan Sosis Dan Bakso Ikan Dilengkapi Sambal Pedas Dan Jeruk Sambal Terpisah",
+          "price": "Rp. 12,500"
+        },
+        {
+          "name": "Seblak Sosis Bakso",
+          "description": "Seblak Telur Dengan Isian Aneka Kerupuk Ditambah Potongan Sosis Dan Bakso Ikan Dilengkapi Sambal Pedas Dan Jeruk Sambal Terpisah",
+          "price": "Rp. 10,000"
+        },
+        {
+          "name": "Seblak Ceker Tulang",
+          "description": "Seblak Telur Dengan Isian Aneka Kerupuk Ditambah Ceker Dan Tulang Ayam Dilengkapi Sambal Pedas Dan Jeruk Sambal Terpisah",
+          "price": "Rp. 10,000"
+        },
+        {
+          "name": "Kerupuk Kentang Udang (mentah)",
+          "description": "Kerupuk Kentang Udang Rasa Manis Pedas Asli Produksi Gresik 250 Gram (mentah) Bisa Langsung Digoreng Tanpa Perlu Dijemur Cocok Untuk Teman Makan Atau Cemilan",
+          "price": "Rp. 18,500"
+        },
+        {
+          "name": "Bakso Bakar Saus Sambal",
+          "description": "1 Porsi Bakso Sapi Bakar (2 Tusuk) Dilengkapi Saus Sambal Sachet",
+          "price": "Rp. 9,000"
+        }
+      ]
+    },
+   {
+  "categories": [
+    {
+      "category": "Minuman",
+      "description": "Berikut harga dan menu Minuman yang mempunyai khas unik dan lezat. Ayo Buruan silahkan dipesan menu yang lezat ini.",
+      "items": [
+        {
+          "name": "Juice Beng - Beng Drink",
+          "description": "Minuman Dingin Beng Beng Drink Yang Menyegarkan",
+          "price": "Rp. 5,000"
+        },
+        {
+          "name": "Jus Nutrisari Jeruk Peras",
+          "description": "Minuman Dingin Nutrisari Rasa Jeruk Peras Yang Menyegarkan",
+          "price": "Rp. 4,000"
+        },
+        {
+          "name": "Es Teh Manis",
+          "description": "Es Teh Manis Dingin Menyegarkan",
+          "price": "Rp. 3,000"
+        },
+        {
+          "name": "Juice Chocolatos",
+          "description": "Minuman Chocolatos Dingin Yang Menyegarkan",
+          "price": "Rp. 5,000"
+        },
+        {
+          "name": "Juice Indocafe Coffeemix",
+          "description": "Jus Kopi Dingin Indocafe Coffeemix",
+          "price": "Rp. 4,000"
+        },
+        {
+          "name": "Jus Pop Ice",
+          "description": "Minuman Jus Pop Ice Dingin Yang Menyegarkan Dengan Pilihan Rasa Strawberry, Blueberry, Anggur, Vanilla, Coklat, Durian, Atau Taro",
+          "price": "Rp. 4,000"
+        },
+        {
+          "name": "Juice Milo",
+          "description": "Minuman Dingin Milo Yang Menyegarkan",
+          "price": "Rp. 5,000"
+        },
+        {
+          "name": "Jus Pop Ice (8 Varian Rasa)",
+          "description": "Minuman Jus Pop Ice Dingin Yang Menyegarkan Dengan Pilihan 8 Varian Rasa",
+          "price": "Rp. 4,000"
+        },
+        {
+          "name": "Juice Nutrisari Leci",
+          "description": "Minuman Dingin Nutrisari Rasa Leci Yang Menyegarkan",
+          "price": "Rp. 4,000"
+        },
+        {
+          "name": "Juice Pop Ice Blueberry",
+          "description": "Minuman Jus Pop Ice Dingin Rasa Blueberry Yang Menyegarkan",
+          "price": "Rp. 4,000"
+        }
+      ]
+    }
+  ]
+}
+
