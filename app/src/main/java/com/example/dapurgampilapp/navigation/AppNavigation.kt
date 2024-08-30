@@ -1,41 +1,39 @@
 package com.example.dapurgampilapp.navigation
 
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.dapurgampilapp.screens.logins.LoginPage
 import com.example.dapurgampilapp.AuthViewModel
-import com.example.dapurgampilapp.screens.logins.HomePage
-import com.example.dapurgampilapp.screens.admins.HomePageAdmin
-import com.example.dapurgampilapp.screens.HomePageCustomer
-import com.example.dapurgampilapp.screens.HomePagePartner
+import com.example.dapurgampilapp.screens.logins.LoginPage
 import com.example.dapurgampilapp.screens.logins.SignupPage
+import com.example.dapurgampilapp.screens.admins.HomePageAdmin
+import com.example.dapurgampilapp.screens.customer.HomePageCustomer
+import com.example.dapurgampilapp.screens.partner.HomePagePartner
+import com.example.dapurgampilapp.screens.logins.HomePage
 
 @Composable
-fun AppNavigation(modifier: Modifier = Modifier, authViewModel: AuthViewModel) {
+fun AppNavigation(authViewModel: AuthViewModel) {
     val navController = rememberNavController()
 
-    NavHost(navController = navController, startDestination = "login", builder = {
+    NavHost(navController = navController, startDestination = "login") {
         composable("login") {
-            LoginPage(modifier,navController,authViewModel)
+            LoginPage(navController = navController, authViewModel = authViewModel)
         }
         composable("signup") {
-            SignupPage(modifier,navController,authViewModel)
+            SignupPage(navController = navController, authViewModel = authViewModel)
         }
         composable("home") {
-            HomePage(modifier,navController,authViewModel)
+            HomePage(NavController = navController, authViewModel = authViewModel)
         }
         composable("home admin") {
-            HomePageAdmin(modifier,navController,authViewModel)
+            HomePageAdmin(navController = navController, authViewModel = authViewModel)
         }
         composable("home customer") {
-            HomePageCustomer(modifier,navController,authViewModel)
+            HomePageCustomer(navController = navController, authViewModel = authViewModel)
         }
         composable("home partner") {
-            HomePagePartner(modifier,navController,authViewModel)
+            HomePagePartner(navController = navController, authViewModel = authViewModel)
         }
-    })
+    }
 }
-

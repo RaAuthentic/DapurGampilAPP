@@ -1,5 +1,6 @@
-package com.example.dapurgampilapp.screens
+package com.example.dapurgampilapp.screens.customer
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -10,17 +11,19 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.dapurgampilapp.AuthState
 import com.example.dapurgampilapp.AuthViewModel
 
 @Composable
-fun HomePageCustomer(
-    modifier: Modifier = Modifier,
-    navController: NavController,
+fun NavCustomerApi(
+    modifier: Modifier = Modifier, navController: NavController,
     authViewModel: AuthViewModel
 ) {
+
     val authState = authViewModel.authState.observeAsState()
 
     LaunchedEffect(authState.value) {
@@ -31,16 +34,19 @@ fun HomePageCustomer(
     }
 
     Column(
-        modifier = modifier.fillMaxSize(),
+        modifier = modifier
+            .fillMaxSize()
+            .background(Color(0Xff1976D2)),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text(text = "Selamat Datang, Customer", fontSize = 32.sp)
-
+        Text(text = "Graphics Page", fontSize = 10.sp, fontWeight = FontWeight.SemiBold)
+        Color.Gray
         TextButton(onClick = {
             authViewModel.signout()
         }) {
             Text(text = "Sign Out")
         }
     }
+
 }

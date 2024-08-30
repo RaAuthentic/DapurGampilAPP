@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.dapurgampilapp.data.User
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -14,6 +15,7 @@ class UserViewModel : ViewModel() {
     val userList: StateFlow<List<User>> = _userList
 
     private val db = FirebaseFirestore.getInstance()
+    private val auth = FirebaseAuth.getInstance()
 
     fun fetchUsers() {
         viewModelScope.launch {
@@ -47,8 +49,21 @@ class UserViewModel : ViewModel() {
                 .addOnFailureListener { exception ->
                     Log.e("UserViewModel", "Error deleting user: ", exception)
                 }
+
+            auth.currentUser?.let { user ->
+                if (user.uid == userId) {
+                    user.delete()
+                        .addOnSuccessListener {
+                            Log.d("UserViewModel", "User successfully deleted from Auth!")
+                        }
+                        .addOnFailureListener { exception ->
+                            Log.e("UserViewModel", "Error deleting user from Auth: ", exception)
+                        }
+                }
+            }
         }
     }
+
 
     fun updateUser(user: User) {
         viewModelScope.launch {
@@ -63,5 +78,32 @@ class UserViewModel : ViewModel() {
                 }
         }
     }
-}
 
+
+    fun addUser(email: String, username: String, role: Int) {
+        viewModelScope.launch {
+            // Create user in Firebase Authentication
+            val defaultPassword = "defaultPassword" // Use a default or generated password
+
+            auth.createUserWithEmailAndPassword(email, defaultPassword)
+                .addOnSuccessListener { authResult ->
+                    val userId = authResult.user?.uid ?: return@addOnSuccessListener
+
+                    // Save additional user info to Firestore
+                    val user = User(uid = userId, username = username, email = email, role = role)
+                    db.collection("users").document(userId)
+                        .set(user)
+                        .addOnSuccessListener {
+                            Log.d("UserViewModel", "User successfully added!")
+                            fetchUsers() // Refresh data
+                        }
+                        .addOnFailureListener { exception ->
+                            Log.e("UserViewModel", "Error adding user: ", exception)
+                        }
+                }
+                .addOnFailureListener { exception ->
+                    Log.e("UserViewModel", "Error creating user: ", exception)
+                }
+        }
+    }
+}

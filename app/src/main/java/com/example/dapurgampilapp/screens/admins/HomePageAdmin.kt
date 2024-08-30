@@ -1,60 +1,46 @@
 package com.example.dapurgampilapp.screens.admins
 
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Settings
-import androidx.compose.material3.Badge
-import androidx.compose.material3.BadgedBox
-import androidx.compose.material3.Icon
-import androidx.compose.material3.NavigationBar
-import androidx.compose.material3.NavigationBarItem
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.dapurgampilapp.AuthViewModel
 import com.example.dapurgampilapp.UserViewModel
 import com.example.dapurgampilapp.data.NavAdminItem
-
+import com.example.dapurgampilapp.screens.NavAdminHome
 
 @Composable
 fun HomePageAdmin(
-    modifier: Modifier = Modifier,
     navController: NavController,
     authViewModel: AuthViewModel
 ) {
     val navItemList = listOf(
         NavAdminItem("Home", Icons.Default.Home),
-        NavAdminItem("User", Icons.Default.AccountCircle),
-        NavAdminItem("Settings", Icons.Default.Settings),
+        NavAdminItem("User Management", Icons.Default.AccountCircle),
+        NavAdminItem("Bio", Icons.Default.Settings),
     )
 
-    var selectedIndex by remember {
-        mutableIntStateOf(0)
-    }
+    var selectedIndex by remember { mutableStateOf(0) }
 
     Scaffold(
-        modifier = Modifier.fillMaxSize(),
         bottomBar = {
-            NavigationBar {
+            NavigationBar(modifier = Modifier.fillMaxWidth()) {
                 navItemList.forEachIndexed { index, navItem ->
                     NavigationBarItem(
                         selected = selectedIndex == index,
                         onClick = {
                             selectedIndex = index
+                            // You can navigate to the respective screens here if needed
                         },
                         icon = {
                             BadgedBox(badge = {
-                                Badge()
+//                                Badge()
                                 Text(text = "" )
                             }) {
                                 Icon(imageVector = navItem.icon, contentDescription = "Icon")
@@ -69,7 +55,9 @@ fun HomePageAdmin(
         }
     ) { innerPadding ->
         ContentScreen(
-            modifier = Modifier.padding(innerPadding),
+            modifier = Modifier
+                .padding(innerPadding) // Adjust content padding to avoid overlap
+                .fillMaxSize(), // Ensure the content fills the available space
             selectedIndex = selectedIndex,
             navController = navController,
             authViewModel = authViewModel
@@ -87,11 +75,13 @@ fun ContentScreen(
 ) {
     val userViewModel: UserViewModel = viewModel()
 
-    when (selectedIndex) {
-        0 -> NavAdminHome(modifier)
-        1 -> NavAdminUser(modifier, userViewModel = userViewModel, navController = navController)
-        2 -> NavAdminSettings(navController = navController, authViewModel = authViewModel)
+    // Use Box to make sure ContentScreen fills its parent
+    Box(modifier = modifier) {
+        when (selectedIndex) {
+            0 -> NavAdminHome(modifier = Modifier.fillMaxSize(), navController = navController, authViewModel = authViewModel)
+            1 -> NavAdminUser(modifier = Modifier.fillMaxSize(), userViewModel = userViewModel, navController = navController)
+            2 -> NavAdminSettings(modifier = Modifier.fillMaxSize(), navController = navController, authViewModel = authViewModel)
+        }
     }
 }
-
 
